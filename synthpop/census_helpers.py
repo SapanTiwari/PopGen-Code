@@ -9,8 +9,8 @@ class Census:
 
     def __init__(self, key):
         self.c = census.Census(key)
-        self.pums_relationship_file_url = "https://www.census.gov/geo/" \
-                                          "maps-data/data/docs/rel/2010_"\
+        self.pums_relationship_file_url = "http://www2.census.gov/geo/docs/" \
+                                          "maps-data/data/rel/2010_"\
                                           "Census_Tract_to_2010_PUMA.txt"
         self.pums_relationship_df = None
         self.base_url = "http://paris.urbansim.org/data/pums/"
@@ -22,7 +22,7 @@ class Census:
             self.base_url + "puma_p_%s.csv"
         self.pums_household_state_base_url = \
             self.base_url + "puma_h_%s.csv"
-        self.fips_url = "https://www.census.gov/geo/reference/codes/files/" \
+        self.fips_url = "http://www2.census.gov/geo/docs/reference/codes/files/" \
                         "national_county.txt"
         self.fips_df = None
         self.pums_cache = {}
@@ -140,7 +140,7 @@ class Census:
                     "County ANSI": "object"
                 },
                 index_col=["State",
-                           "County Name"]
+                           "County Name"]                
             )
             del self.fips_df["ANSI Cl"]
         return self.fips_df
